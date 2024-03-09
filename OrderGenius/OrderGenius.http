@@ -1,0 +1,6 @@
+@OrderGenius_HostAddress = http://localhost:5075
+
+GET {{OrderGenius_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

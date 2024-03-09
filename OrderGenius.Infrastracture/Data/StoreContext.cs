@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OrderGenius.Core.Entities.OrderAggregate;
 using OrderGenius.Core.Entities.ProductAggregate;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace OrderGenius.Infrastracture.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

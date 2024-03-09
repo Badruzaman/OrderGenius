@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderGenius.Infrastracture.Data;
 
@@ -11,9 +12,11 @@ using OrderGenius.Infrastracture.Data;
 namespace OrderGenius.Infrastracture.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240309061952_add-order")]
+    partial class addorder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,13 +56,19 @@ namespace OrderGenius.Infrastracture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("OrderId")
+                    b.Property<decimal>("OrderId")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("OrderId1")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<decimal>("ProductId")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId1")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Qunatity")
@@ -67,9 +76,9 @@ namespace OrderGenius.Infrastracture.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("OrderId1");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId1");
 
                     b.ToTable("OrderDetail");
                 });
@@ -150,13 +159,13 @@ namespace OrderGenius.Infrastracture.Migrations
                 {
                     b.HasOne("OrderGenius.Core.Entities.OrderAggregate.Order", "Order")
                         .WithMany("Items")
-                        .HasForeignKey("OrderId")
+                        .HasForeignKey("OrderId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OrderGenius.Core.Entities.ProductAggregate.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ProductId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

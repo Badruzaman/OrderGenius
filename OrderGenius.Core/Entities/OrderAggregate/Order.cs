@@ -14,10 +14,11 @@ namespace OrderGenius.Core.Entities.OrderAggregate
             Items = new HashSet<OrderDetail>();
         }  
         public string Code { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderPlaced { get; set; }
+        public DateTime? OrderFulfilled { get; set; }
         public decimal TotalPrice { get; set; }
         public int CustomerId {  get; set; }
-        public virtual Customer Customers { get; set; }
-        public virtual ICollection<OrderDetail> Items { get; set; }
+        public Customer Customers { get; set; }
+        public ICollection<OrderDetail> Items { get; set; }
     }
 }

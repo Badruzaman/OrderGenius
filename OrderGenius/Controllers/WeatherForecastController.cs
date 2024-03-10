@@ -24,7 +24,7 @@ namespace OrderGenius.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogWarning(eventId: 1, message: $"This is a log test {1.0}");
+            _logger.LogWarning(eventId: 1, message: $"This is a log test api version {1.0}");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

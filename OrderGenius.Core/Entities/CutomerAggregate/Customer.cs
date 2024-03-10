@@ -14,11 +14,11 @@ namespace OrderGenius.Core.Entities.CutomerAggregate
         public string FirstName { get; set; }
         [StringLength(50)]
         public string LastName { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string ZipCode { get; set; }
-        public string Email { get; set; }
+        public string Street { get; set; } = null!;
+        public string City { get; set; } = null!;
+        public string State { get; set; } = null!;
+        public string ZipCode { get; set; }= null!;
+        public string Email { get; set; } = null!;
         public string Phone { get; set; }
     }
 }

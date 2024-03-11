@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Infrastracture.Data;
 using Serilog;
 
@@ -22,6 +24,28 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
 });
 //
+
+//await AppIdentityDbContextSeed.SeedUserData(UserManager<AppUser>>());
+//static async Task SeedUserData(UserManager<AppUser> userManager)
+//{
+//    if (!userManager.Users.Any())
+//    {
+//        AppUser appUser = new AppUser
+//        {
+//            DisplayName = "Badruzzaman",
+//            Email = "badru.cse@gmail.com",
+//            Address = new Address
+//            {
+//                FirstName = "Badru",
+//                LastName = "Zaman",
+//                City = "Dhaka",
+//                State = "Dhaka",
+//                ZipCode = "1206",
+//            }
+//        };
+//        await userManager.CreateAsync(appUser, "badru@123");
+//    }
+//}
 
 // Logger configuration
 var logger = new LoggerConfiguration()

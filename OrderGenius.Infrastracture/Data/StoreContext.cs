@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using OrderGenius.Core.Entities.CutomerAggregate;
+using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Core.Entities.OrderAggregate;
 using OrderGenius.Core.Entities.ProductAggregate;
 using System;
@@ -21,6 +23,7 @@ namespace OrderGenius.Infrastracture.Data
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
-       
+        public DbSet<Address> Address { get; set; } 
+
     }
 }

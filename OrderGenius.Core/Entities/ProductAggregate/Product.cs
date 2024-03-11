@@ -18,7 +18,7 @@ namespace OrderGenius.Core.Entities.ProductAggregate
         [Column(TypeName = "decimal(18,5)")]
         public decimal? Price { get; set; }
         [StringLength(75)]
-        public string PictureUrl { get; set; } = null!;
+        public string? PictureUrl { get; set; }
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
         public int ProductBrandId { get; set; }

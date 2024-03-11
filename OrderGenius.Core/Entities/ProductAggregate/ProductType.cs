@@ -1,9 +1,12 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+
 namespace OrderGenius.Core.Entities.ProductAggregate
 {
     public class ProductType : BaseEntity
     {
-       public string Name { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
     }
 }

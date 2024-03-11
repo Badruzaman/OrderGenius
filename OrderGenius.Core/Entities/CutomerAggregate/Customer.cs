@@ -24,7 +24,7 @@ namespace OrderGenius.Core.Entities.CutomerAggregate
         public string? ZipCode { get; set; }
         [StringLength(20)]
         public string? Email { get; set; }
-        [StringLength(15)]
+        [StringLength(11)]
         public string? Phone { get; set; }
     }
 }

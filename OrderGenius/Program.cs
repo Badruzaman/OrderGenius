@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Infrastracture.Data;
 using Serilog;

@@ -3,6 +3,7 @@ using OrderGenius.Core.Interfaces;
 using OrderGenius.Infrastracture.Repositories;
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace OrderGenius.Infrastracture.Data
     {
         private readonly StoreContext _storeContext;
         private Hashtable _repositories;
+        
 
         public UnitOfWork(StoreContext storeContext)
         {
@@ -31,7 +33,8 @@ namespace OrderGenius.Infrastracture.Data
 
         public IGenericRepository<TEntity> repository<TEntity>() where TEntity : BaseEntity
         {
-            if (_repositories == null) _repositories = new Hashtable();
+            if (_repositories == null)
+                _repositories = new Hashtable();
             var Type = typeof(TEntity).Name;
             if (!_repositories.ContainsKey(Type))
             {

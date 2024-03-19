@@ -15,7 +15,8 @@ namespace OrderGenius.Errors
         }
         private string DefaultStatusCodeMessage(int StatusCode)
         {
-            return StatusCode switch
+            return StatusCode 
+            switch
             {
                 400 => "A bad request you have made",
                 401 => "Authorized you have not",

@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OrderGenius.Core\OrderGenius.Core.csproj" />
+    <ProjectReference Include="..\OrderGenius.Infrastracture\OrderGenius.Infrastracture.csproj" />
+  </ItemGroup>
+
 </Project>

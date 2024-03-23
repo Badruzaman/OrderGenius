@@ -15,24 +15,36 @@ namespace OrderGenius.Controllers
     {
         private readonly IMapper mapper;
         public IOrderService OrderService { get; }
-        public OrdersController(IOrderService orderService, IMapper mapper) 
+        public OrdersController(IOrderService orderService) 
         {
             OrderService = orderService;
-            this.mapper = mapper;
+            //this.mapper = mapper;
         }
         [HttpPost(nameof(CreateOrder))]
         public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
         {
             //var user = HttpContext.User.ReteriveEmailFromPrincipal();
             //var address = mapper.Map<AddressDto, Address>(orderDto.ShippingToAddress);
-            //var order = await OrderService.CreateOrderAsync(
-            //    );
-            //if (order == null)
+            var order = new Order
+            {
+                OrderPlaced = orderDto.OrderPlaced,
+                CustomerId = orderDto.CustomerId
+            };
+            foreach (var item in orderDto.Items)
+            {
+                var detail = new OrderDetail
+                {
+                    ProductId = item.ProductId,
+                    Qunatity = item.Qunatity,
+                    Price = item.Price,
+                };
+                order.Items.Add(detail);
+            }
+            //var res = await OrderService.CreateOrderAsync(order);
+            //if (res == null)
             //{
             //    return BadRequest(new APIResponce(400, "Something went Wrong"));
             //}
-            //return Ok(order);
-
             return Ok(orderDto);
         }
     }

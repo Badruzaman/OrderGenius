@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using OrderGenius.Application.OrderServices;
 using OrderGenius.Core.Entities.Identity;
+using OrderGenius.Core.Interfaces;
 using OrderGenius.Infrastracture.Data;
 using Serilog;
 
@@ -16,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // database config
 builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("OrderGeniusDbConnection")));
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 // Api versioning
 builder.Services.AddApiVersioning(options =>

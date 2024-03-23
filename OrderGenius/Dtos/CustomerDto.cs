@@ -4,8 +4,11 @@ namespace OrderGenius.Dtos
 {
     public class CustomerDto
     {
+
+        [Required]
         [StringLength(50)]
         public string FirstName { get; set; }
+        [Required]
         [StringLength(50)]
         public string LastName { get; set; }
         [StringLength(50)]

@@ -7,6 +7,7 @@ using OrderGenius.Application.CustomerServices;
 using OrderGenius.Application.OrderServices;
 using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Core.Interfaces;
+using OrderGenius.Helpers;
 using OrderGenius.Infrastracture.Data;
 using Serilog;
 
@@ -23,7 +24,7 @@ builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
-//builder.Services.AddHostedService<IMapper>();
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 // Api versioning
 builder.Services.AddApiVersioning(options =>

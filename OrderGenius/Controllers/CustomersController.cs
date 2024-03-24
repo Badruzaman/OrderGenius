@@ -13,29 +13,26 @@ namespace OrderGenius.Controllers
     {
         private readonly IMapper mapper;
         public ICustomerService CustomerService { get; }
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService, IMapper _mapper)
         {
             CustomerService = customerService;
-            //this.mapper = mapper;
+            mapper = _mapper;
         }
         [HttpPost(nameof(CreateCustomer))]
         public async Task<ActionResult<Customer>> CreateCustomer(CustomerDto customerDto)
         {
-            var customer = new Customer
+            try
             {
-                FirstName = customerDto.FirstName,
-                LastName = customerDto.LastName,
-                Street = customerDto.Street,
-                City = customerDto.City,
-                State = customerDto.State,
-                ZipCode = customerDto.ZipCode,
-                Email = customerDto.Email,
-                Phone = customerDto.Phone
-            };
-            var result = await CustomerService.CreateCustomerAsync(customer);
-            if (result == null)
+                var customer = mapper.Map<Customer>(customerDto);
+                var result = await CustomerService.CreateCustomerAsync(customer);
+                if (result == null)
+                {
+                    return BadRequest(new APIResponce(400, "Something went Wrong"));
+                }
+            }
+            catch (Exception ex)
             {
-                return BadRequest(new APIResponce(400, "Something went Wrong"));
+                throw;
             }
             return Ok(customerDto);
         }

@@ -11,7 +11,6 @@ namespace OrderGenius.Core.IRepository.ProductRepository
     {
         Task<Product> GetProductByIdAsync(int Id);
         Task<IReadOnlyList<Product>> GetListOfProduct();
-        Task<IReadOnlyList<ProductType>> GetProductsTypeAsync();
-        Task<IReadOnlyList<ProductBrand>> GetProductBrandAsync();
+        
     }
 }

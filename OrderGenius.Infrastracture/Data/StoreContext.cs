@@ -19,8 +19,6 @@ namespace OrderGenius.Infrastracture.Data
 
         }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductType> ProductTypes { get; set; }
-        public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Address> Address { get; set; } 

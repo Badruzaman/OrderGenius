@@ -32,7 +32,7 @@ namespace OrderGenius.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return BadRequest(new APIResponce(400, "Something went Wrong"));
             }
             return Ok(customerDto);
         }

@@ -19,9 +19,5 @@ namespace OrderGenius.Core.Entities.ProductAggregate
         public decimal? Price { get; set; }
         [StringLength(75)]
         public string? PictureUrl { get; set; }
-        public int ProductTypeId { get; set; }
-        public ProductType ProductType { get; set; }
-        public int ProductBrandId { get; set; }
-        public ProductBrand ProductBrand { get; set; }
     }
 }

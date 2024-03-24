@@ -12,7 +12,7 @@ namespace OrderGenius.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly IMapper mapper;
-        public ICustomerService CustomerService { get; }
+        private ICustomerService CustomerService { get; }
         public CustomersController(ICustomerService customerService, IMapper _mapper)
         {
             CustomerService = customerService;

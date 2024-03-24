@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using OrderGenius.Application.CustomerServices;
 using OrderGenius.Application.OrderServices;
+using OrderGenius.Application.ProductServices;
 using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Core.Interfaces;
 using OrderGenius.Helpers;
@@ -24,6 +25,7 @@ builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 // Api versioning

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using OrderGenius.Core.Entities.CutomerAggregate;
+using OrderGenius.Core.Entities.ProductAggregate;
 using OrderGenius.Dtos;
 
 namespace OrderGenius.Helpers
@@ -9,6 +10,7 @@ namespace OrderGenius.Helpers
         public MappingProfiles() 
         {
             CreateMap<CustomerDto, Customer>();
+            CreateMap<ProductDto, Product>();
         }
     }
 }

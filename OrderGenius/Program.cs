@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using OrderGenius.Application.CustomerServices;
+using OrderGenius.Application.CustomServices;
 using OrderGenius.Application.OrderServices;
 using OrderGenius.Application.ProductServices;
 using OrderGenius.Core.Entities.Identity;
@@ -27,6 +28,10 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+       .AddEntityFrameworkStores<StoreContext>()
+       .AddDefaultTokenProviders();
 
 // Api versioning
 builder.Services.AddApiVersioning(options =>

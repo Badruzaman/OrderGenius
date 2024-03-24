@@ -19,7 +19,7 @@ namespace OrderGenius.Application.CustomServices
         public TokenService(IConfiguration configuration)
         {
             _configuration = configuration;
-            _Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Token:Key"]));
+            _Key = new SymmetricSecurityKey(Encoding.UTF32.GetBytes(_configuration["Token:Key"]));
         }
 
         public string CreateToken(AppUser appUser)

@@ -107,7 +107,6 @@ namespace OrderGenius.Controllers
                 DisplayName = user.DisplayName,
                 Emial = user.Email,
                 Token = _tokenService.CreateToken(user)
-
             };
         }
 

@@ -22,6 +22,7 @@ namespace OrderGenius.Infrastracture.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Address> Address { get; set; } 
+        public DbSet<SerialNumber> SerialNumbers { get; set; }
 
     }
 }

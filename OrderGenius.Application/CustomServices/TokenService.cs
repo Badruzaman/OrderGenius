@@ -21,11 +21,7 @@ namespace OrderGenius.Application.CustomServices
             
             _configuration = configuration;
             _Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Token:Key"]));
-
-            //byte[] keyBytes = new byte[64]; 
-            //_Key = new SymmetricSecurityKey(keyBytes);
         }
-
         public string CreateToken(AppUser appUser)
         {
             var claims = new List<Claim>
@@ -33,12 +29,12 @@ namespace OrderGenius.Application.CustomServices
                 new Claim(ClaimTypes.Email, appUser.Email),
                 new Claim(ClaimTypes.GivenName, appUser.DisplayName)
             };
-            var cred = new SigningCredentials(_Key, SecurityAlgorithms.HmacSha512Signature);
+            var cred = new SigningCredentials(_Key, SecurityAlgorithms.HmacSha256);
             var TokenDesc = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Audience = appUser.DisplayName,
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.Now.AddMinutes(10),
                 SigningCredentials = cred,
                 Issuer = _configuration["Token:Issuer"],
 

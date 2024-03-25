@@ -72,15 +72,21 @@ namespace OrderGenius.Controllers
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
-            if (user == null) return Unauthorized(new APIResponce(401));
-
+            if (user == null)
+            {
+                return Unauthorized(new APIResponce(401));
+            }
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
-            if (!result.Succeeded) return Unauthorized(new APIResponce(401));
+            if (!result.Succeeded)
+            {
+                return Unauthorized(new APIResponce(401));
+            }
+            var token = _tokenService.CreateToken(user);
             return new UserDto
             {
                 Emial = user.Email,
                 DisplayName = user.DisplayName,
-                Token = _tokenService.CreateToken(user)
+                Token = token
             };
         }
         [HttpPost(nameof(Register))]

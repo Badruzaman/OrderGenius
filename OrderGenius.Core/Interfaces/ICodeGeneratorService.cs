@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderGenius.Core.Entities.OrderAggregate
+namespace OrderGenius.Core.Interfaces
 {
-    public class SerialNumber : BaseEntity
+    public interface ICodeGeneratorService
     {
-        public int Value { get; set; }
+        string GenerateCode();
     }
 }

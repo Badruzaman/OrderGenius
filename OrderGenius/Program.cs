@@ -9,6 +9,7 @@ using OrderGenius.Application.CustomerServices;
 using OrderGenius.Application.CustomServices;
 using OrderGenius.Application.OrderServices;
 using OrderGenius.Application.ProductServices;
+using OrderGenius.Application.SerialNumberGenerator;
 using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Core.Interfaces;
 using OrderGenius.Helpers;
@@ -50,6 +51,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICodeGeneratorService, CodeGenerator>();
+
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddIdentity<AppUser, IdentityRole>()

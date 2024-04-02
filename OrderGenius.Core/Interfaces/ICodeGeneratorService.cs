@@ -8,7 +8,6 @@ namespace OrderGenius.Core.Interfaces
 {
     public interface ICodeGeneratorService
     {
-        string GenerateCode();
-        string GenerateLeftPadding(int value, int paddingLeftNumber);
+        string GenerateCode(int SerialNo);
     }
 }

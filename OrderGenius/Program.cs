@@ -14,6 +14,7 @@ using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Core.Interfaces;
 using OrderGenius.Helpers;
 using OrderGenius.Infrastracture.Data;
+using OrderGenius.Infrastracture.SeedData;
 using Serilog;
 using System.Text;
 

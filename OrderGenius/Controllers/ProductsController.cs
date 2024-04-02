@@ -13,20 +13,20 @@ namespace OrderGenius.Controllers
     [ApiController]
     public class productController : ControllerBase
     {
-        private readonly IMapper mapper;
-        private IProductService ProductService { get; }
-        public productController(IProductService productService, IMapper _mapper)
+        private readonly IMapper _mapper;
+        private IProductService _productService { get; }
+        public productController(IProductService productService, IMapper mapper)
         {
-            ProductService = productService;
-            mapper = _mapper;
+            _productService = productService;
+            _mapper = mapper;
         }
         [HttpPost(nameof(CreateProduct))]
         public async Task<ActionResult<Customer>> CreateProduct(ProductDto productDto)
         {
             try
             {
-                var product = mapper.Map<Product>(productDto);
-                var result = await ProductService.CreateProductAsync(product);
+                var product = _mapper.Map<Product>(productDto);
+                var result = await _productService.CreateProductAsync(product);
                 if (result == null)
                 {
                     return BadRequest(new APIResponce(400, "Something went Wrong"));

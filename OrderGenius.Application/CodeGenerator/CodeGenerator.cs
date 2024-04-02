@@ -11,12 +11,14 @@ namespace OrderGenius.Application.SerialNumberGenerator
 {
     public class CodeGenerator : ICodeGeneratorService
     {
-        public string GenerateCode()
+        private int paddingLeftNumber = 4;
+        public string GenerateCode(int SerialNo)
         {
             var yearMonthDay = DateTime.Now.ToString("yyyyMMdd");
+            var result = "ORD-" + yearMonthDay + "-" + GenerateLeftPadding(SerialNo, paddingLeftNumber);
             return "ORD-"+ yearMonthDay;
         }
-        public string GenerateLeftPadding(int value, int paddingLeftNumber)
+        private string GenerateLeftPadding(int value, int paddingLeftNumber)
         {
             var result = value.ToString().PadLeft(paddingLeftNumber, '0');
             return result;

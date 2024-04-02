@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "X",
+    "Description": "descX",
+    "Price": 10,
+    "PictureUrl": ""
+  },
+  {
+    "Name": "Y",
+    "Description": "descY",
+    "Price": 20,
+    "PictureUrl": ""
+  }
+]

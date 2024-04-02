@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using OrderGenius.Core.Entities.OrderAggregate;
 using OrderGenius.Core.Entities.ProductAggregate;
-using OrderGenius.Infrastracture.Data;
-using OrderGenius.Infrastracture.SeedData;
 using System.Text.Json;
 
 #nullable disable
@@ -10,7 +7,7 @@ using System.Text.Json;
 namespace OrderGenius.Infrastracture.Migrations
 {
     /// <inheritdoc />
-    public partial class newseed : Migration
+    public partial class dataseed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,13 +17,11 @@ namespace OrderGenius.Infrastracture.Migrations
             foreach (var item in codeConfig)
             {
 
-               migrationBuilder.InsertData(
-               table: "Products",
-               columns: new[] { "Name", "Description", "Price", "PictureUrl" },
-               values: new object[] { item.Name, item.Description, item.Price, item.PictureUrl });
+                migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Name", "Description", "Price", "PictureUrl" },
+                values: new object[] { item.Name, item.Description, item.Price, item.PictureUrl });
             }
-
-
         }
 
         /// <inheritdoc />
@@ -34,6 +29,5 @@ namespace OrderGenius.Infrastracture.Migrations
         {
 
         }
-
     }
 }

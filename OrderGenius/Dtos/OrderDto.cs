@@ -10,6 +10,7 @@ namespace OrderGenius.Dtos
         }
         [Required]
         public DateTime OrderPlaced { get; set; }
+        public DateTime? OrderFulfilled { get; set; }
         [Required]
         public int CustomerId { get; set; }
         [Required]

@@ -19,7 +19,7 @@ namespace OrderGenius.Application.OrderServices
             try
             {
                 var codeConfigData = await _unitOfWork.repository<CodeConfig>().GetByIdAsync(1);
-                var serialNumber = codeConfigData.Count;
+                var serialNumber = codeConfigData.Count + 1;
                 var code = _codeGeneratorService.GenerateCode(serialNumber);
                 var codeConfig = new CodeConfig
                 {

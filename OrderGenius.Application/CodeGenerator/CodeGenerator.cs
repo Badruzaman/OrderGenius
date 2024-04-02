@@ -16,7 +16,7 @@ namespace OrderGenius.Application.SerialNumberGenerator
         {
             var yearMonthDay = DateTime.Now.ToString("yyyyMMdd");
             var result = "ORD-" + yearMonthDay + "-" + GenerateLeftPadding(SerialNo, paddingLeftNumber);
-            return "ORD-"+ yearMonthDay;
+            return result;
         }
         private string GenerateLeftPadding(int value, int paddingLeftNumber)
         {

@@ -21,15 +21,12 @@ namespace OrderGenius.Application.OrderServices
                 var codeConfigData = await _unitOfWork.repository<CodeConfig>().GetByIdAsync(1);
                 var serialNumber = codeConfigData.Count + 1;
                 var code = _codeGeneratorService.GenerateCode(serialNumber);
-                var codeConfig = new CodeConfig
-                {
-                    Id = 1,
-                    Count = serialNumber,
-                    LastCode = code,
-                    UpdatedAt = DateTime.Now
-                };
+                codeConfigData.UpdatedAt = DateTime.Now;
+                codeConfigData.Count = serialNumber;
+                codeConfigData.LastCode = code;
+                order.Code = code;
                 _unitOfWork.repository<Order>().Add(order);
-                _unitOfWork.repository<CodeConfig>().Update(codeConfig);
+                _unitOfWork.repository<CodeConfig>().Update(codeConfigData);
                 var result = await _unitOfWork.Complete();
                 if (result <= 0)
                 {

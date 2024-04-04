@@ -14,7 +14,7 @@ namespace OrderGenius.Core.Entities.OrderAggregate
     {
         public Order() 
         {
-            Items = new HashSet<OrderDetail>();
+            OrderDetails = new List<OrderDetail>();
         }
         [StringLength(20)]
         public string Code { get; set; }
@@ -24,6 +24,6 @@ namespace OrderGenius.Core.Entities.OrderAggregate
         public decimal TotalPrice { get; set; }
         public int CustomerId {  get; set; }
         public Customer Customers { get; set; }
-        public ICollection<OrderDetail> Items { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }

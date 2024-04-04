@@ -13,5 +13,6 @@ namespace OrderGenius.Dtos
         public decimal Price { get; set; }
         [Required]
         public int ProductId { get; set; }
+        
     }
 }

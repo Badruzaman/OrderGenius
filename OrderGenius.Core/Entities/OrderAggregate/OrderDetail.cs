@@ -10,9 +10,9 @@ namespace OrderGenius.Core.Entities.OrderAggregate
 {
     public class OrderDetail : BaseEntity
     {
-        [Column(TypeName = "decimal(6,2)")]
+        [Column(TypeName = "decimal(18,5)")]
         public decimal Qunatity { get; set; }
-        [Column(TypeName = "decimal(6,5)")]
+        [Column(TypeName = "decimal(18,5)")]
         public decimal Price { get; set; }
         public int OrderId { get; set; }
         public Order Order { get; set; }

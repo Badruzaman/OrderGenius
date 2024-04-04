@@ -6,14 +6,15 @@ namespace OrderGenius.Dtos
     {
         public OrderDto()
         {
-            Items = new List<OrderDetailDto>();
-        }
+            OrderDetails = new List<OrderDetailDto>();
+        }  
         [Required]
         public DateTime OrderPlaced { get; set; }
         public DateTime? OrderFulfilled { get; set; }
         [Required]
         public int CustomerId { get; set; }
+        public decimal TotalPrice {  get; set; }
         [Required]
-        public IList<OrderDetailDto> Items { get; set; }
+        public List<OrderDetailDto> OrderDetails { get; set; }
     }
 }

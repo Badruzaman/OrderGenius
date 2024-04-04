@@ -8,11 +8,13 @@ namespace OrderGenius.Helpers
 {
     public class MappingProfiles : Profile
     {
-        public MappingProfiles() 
+        public MappingProfiles()
         {
             CreateMap<CustomerDto, Customer>();
             CreateMap<ProductDto, Product>();
-            CreateMap<OrderDto, Order>();
+            CreateMap<OrderDetailDto, OrderDetail>();
+            CreateMap<OrderDto, Order>()
+                .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDetails));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace OrderGenius.Core.Entities.OrderAggregate
         public string Code { get; set; }
         public DateTime OrderPlaced { get; set; }   
         public DateTime? OrderFulfilled { get; set; }
-        [Column(TypeName = "decimal(18,5)")]
+        [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
         public int CustomerId {  get; set; }
         public Customer Customers { get; set; }

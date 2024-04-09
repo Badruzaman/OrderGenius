@@ -18,7 +18,6 @@ namespace OrderGenius.Application.CustomServices
         private readonly SymmetricSecurityKey _Key;
         public TokenService(IConfiguration configuration)
         {
-            
             _configuration = configuration;
             _Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Token:Key"]));
         }
@@ -37,7 +36,6 @@ namespace OrderGenius.Application.CustomServices
                 Expires = DateTime.Now.AddMinutes(10),
                 SigningCredentials = cred,
                 Issuer = _configuration["Token:Issuer"],
-
             };
             var tokenhandler = new JwtSecurityTokenHandler();
             var token = tokenhandler.CreateToken(TokenDesc);

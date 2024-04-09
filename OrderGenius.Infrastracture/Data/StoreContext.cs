@@ -23,6 +23,11 @@ namespace OrderGenius.Infrastracture.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Address> Address { get; set; } 
         public DbSet<CodeConfig> CodeConfigs { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItems> CartItems { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }

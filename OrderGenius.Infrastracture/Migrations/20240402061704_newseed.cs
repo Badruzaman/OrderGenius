@@ -23,9 +23,8 @@ namespace OrderGenius.Infrastracture.Migrations
                migrationBuilder.InsertData(
                table: "Products",
                columns: new[] { "Name", "Description", "Price", "PictureUrl" },
-               values: new object[] { item.Name, item.Description, item.Price, item.PictureUrl });
+               values: new object[] { item.Name, item.Description, item.UnitPrice, item.PictureUrl });
             }
-
 
         }
 

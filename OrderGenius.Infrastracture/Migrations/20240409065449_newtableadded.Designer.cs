@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderGenius.Infrastracture.Data;
 
@@ -11,9 +12,11 @@ using OrderGenius.Infrastracture.Data;
 namespace OrderGenius.Infrastracture.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240409065449_newtableadded")]
+    partial class newtableadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,13 +181,15 @@ namespace OrderGenius.Infrastracture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Carts");
                 });
@@ -309,7 +314,7 @@ namespace OrderGenius.Infrastracture.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,5)");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -372,11 +377,8 @@ namespace OrderGenius.Infrastracture.Migrations
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
-                    b.Property<decimal?>("Quantity")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<decimal?>("UnitPrice")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,5)");
 
                     b.HasKey("Id");
 
@@ -404,15 +406,17 @@ namespace OrderGenius.Infrastracture.Migrations
                     b.Property<DateTime>("ReviewDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Reviews");
                 });
@@ -432,9 +436,7 @@ namespace OrderGenius.Infrastracture.Migrations
                 {
                     b.HasOne("OrderGenius.Core.Entities.Identity.AppUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });
@@ -442,7 +444,7 @@ namespace OrderGenius.Infrastracture.Migrations
             modelBuilder.Entity("OrderGenius.Core.Entities.OrderAggregate.CartItems", b =>
                 {
                     b.HasOne("OrderGenius.Core.Entities.OrderAggregate.Cart", "Carts")
-                        .WithMany("CartItems")
+                        .WithMany()
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -509,9 +511,7 @@ namespace OrderGenius.Infrastracture.Migrations
 
                     b.HasOne("OrderGenius.Core.Entities.Identity.AppUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Product");
 
@@ -522,11 +522,6 @@ namespace OrderGenius.Infrastracture.Migrations
                 {
                     b.Navigation("Address")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("OrderGenius.Core.Entities.OrderAggregate.Cart", b =>
-                {
-                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("OrderGenius.Core.Entities.OrderAggregate.Order", b =>

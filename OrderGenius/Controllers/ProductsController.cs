@@ -32,8 +32,10 @@ namespace OrderGenius.Controllers
                     return BadRequest(new APIResponce(400, "Something went Wrong"));
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                //return StatusCode(StatusCodes.Status500InternalServerError,
+                //   "Error storing data in the database");
                 return BadRequest(new APIResponce(400, "Something went Wrong"));
             }
             return Ok(productDto);

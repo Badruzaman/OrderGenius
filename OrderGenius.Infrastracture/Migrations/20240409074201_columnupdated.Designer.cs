@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderGenius.Infrastracture.Data;
 
@@ -11,9 +12,11 @@ using OrderGenius.Infrastracture.Data;
 namespace OrderGenius.Infrastracture.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240409074201_columnupdated")]
+    partial class columnupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -309,7 +312,7 @@ namespace OrderGenius.Infrastracture.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,5)");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -372,11 +375,8 @@ namespace OrderGenius.Infrastracture.Migrations
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
-                    b.Property<decimal?>("Quantity")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<decimal?>("UnitPrice")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,5)");
 
                     b.HasKey("Id");
 
@@ -442,7 +442,7 @@ namespace OrderGenius.Infrastracture.Migrations
             modelBuilder.Entity("OrderGenius.Core.Entities.OrderAggregate.CartItems", b =>
                 {
                     b.HasOne("OrderGenius.Core.Entities.OrderAggregate.Cart", "Carts")
-                        .WithMany("CartItems")
+                        .WithMany()
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -522,11 +522,6 @@ namespace OrderGenius.Infrastracture.Migrations
                 {
                     b.Navigation("Address")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("OrderGenius.Core.Entities.OrderAggregate.Cart", b =>
-                {
-                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("OrderGenius.Core.Entities.OrderAggregate.Order", b =>

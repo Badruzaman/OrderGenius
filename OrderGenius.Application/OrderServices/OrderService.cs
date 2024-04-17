@@ -24,6 +24,7 @@ namespace OrderGenius.Application.OrderServices
                 codeConfigData.UpdatedAt = DateTime.Now;
                 codeConfigData.Count = serialNumber;
                 codeConfigData.LastCode = code;
+
                 order.Code = code;
                 _unitOfWork.repository<Order>().Add(order);
                 _unitOfWork.repository<CodeConfig>().Update(codeConfigData);

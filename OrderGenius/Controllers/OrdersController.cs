@@ -11,17 +11,17 @@ namespace OrderGenius.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase
+    public class ordersController : ControllerBase
     {
         private readonly IMapper _mapper;
         public IOrderService _orderService { get; }
-        public OrdersController(IOrderService orderService, IMapper mapper)
+        public ordersController(IOrderService orderService, IMapper mapper)
         {
             _orderService = orderService;
             _mapper = mapper;
         }
-        [HttpPost(nameof(CreateOrder))]
-        public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
+        [HttpPost(nameof(createorder))]
+        public async Task<ActionResult<Order>> createorder(OrderDto orderDto)
         {
             try
             {

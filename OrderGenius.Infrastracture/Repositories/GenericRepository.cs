@@ -13,8 +13,8 @@ namespace OrderGenius.Infrastracture.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly StoreContext _storeContext;
-        public GenericRepository(StoreContext storeContext)
+        private readonly MsSqlContext _storeContext;
+        public GenericRepository(MsSqlContext storeContext)
         {
             _storeContext = storeContext;
         }

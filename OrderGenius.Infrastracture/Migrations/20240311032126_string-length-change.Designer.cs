@@ -11,7 +11,7 @@ using OrderGenius.Infrastracture.Data;
 
 namespace OrderGenius.Infrastracture.Migrations
 {
-    [DbContext(typeof(StoreContext))]
+    [DbContext(typeof(MsSqlContext))]
     [Migration("20240311032126_string-length-change")]
     partial class stringlengthchange
     {

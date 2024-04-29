@@ -13,11 +13,9 @@ namespace OrderGenius.Infrastracture.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly StoreContext _storeContext;
+        private readonly MsSqlContext _storeContext;
         private Hashtable _repositories;
-        
-
-        public UnitOfWork(StoreContext storeContext)
+        public UnitOfWork(MsSqlContext storeContext)
         {
             _storeContext = storeContext;
         }

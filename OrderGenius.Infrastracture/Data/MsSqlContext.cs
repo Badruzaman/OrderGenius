@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace OrderGenius.Infrastracture.Data
 {
-    public class StoreContext : DbContext
+    public class MsSqlContext : DbContext
     {
-        public StoreContext(DbContextOptions<StoreContext> options) : base(options)
+        public MsSqlContext(DbContextOptions<MsSqlContext> options) : base(options)
         {
 
         }

@@ -12,7 +12,7 @@ namespace OrderGenius.Infrastracture.SeedData
 {
     public class StoreContextSeed
     {
-        public static async Task SeedAsync(StoreContext storeContext, ILoggerFactory loggerFactory)
+        public static async Task SeedAsync(MsSqlContext storeContext, ILoggerFactory loggerFactory)
         {
             try
             {

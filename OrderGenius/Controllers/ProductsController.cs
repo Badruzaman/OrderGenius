@@ -20,8 +20,8 @@ namespace OrderGenius.Controllers
             _productService = productService;
             _mapper = mapper;
         }
-        [HttpPost(nameof(CreateProduct))]
-        public async Task<ActionResult<Customer>> CreateProduct(ProductDto productDto)
+        [HttpPost(nameof(createproduct))]
+        public async Task<ActionResult<Customer>> createproduct(ProductDto productDto)
         {
             try
             {

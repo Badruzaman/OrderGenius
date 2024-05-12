@@ -11,5 +11,8 @@ namespace OrderGenius.Core.Interfaces
     {
         IGenericRepository<TEntity> repository<TEntity>() where TEntity : BaseEntity;
         Task<int> Complete();
+        Task<int> Commit();
+        void Rollback();
+        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity;
     }
 }

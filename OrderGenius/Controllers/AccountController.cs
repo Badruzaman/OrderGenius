@@ -39,9 +39,7 @@ namespace OrderGenius.Controllers
                 DisplayName = user.DisplayName,
                 Token = _tokenService.CreateToken(user),
                 Emial = user.Email
-
             };
-
         }
 
         [HttpGet("emailexists")]

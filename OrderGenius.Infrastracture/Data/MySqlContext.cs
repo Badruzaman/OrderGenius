@@ -9,5 +9,10 @@ namespace OrderGenius.Infrastracture.Data
 {
     public class MySqlContext : DbContext
     {
+        public MySqlContext(DbContextOptions<MySqlContext> options) : base(options)
+        {
+
+        }
+
     }
 }

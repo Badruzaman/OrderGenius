@@ -8,7 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\**" />
+    <Compile Remove="Queries\**" />
+    <Content Remove="Commands\**" />
+    <Content Remove="Queries\**" />
+    <EmbeddedResource Remove="Commands\**" />
+    <EmbeddedResource Remove="Queries\**" />
+    <None Remove="Commands\**" />
+    <None Remove="Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />

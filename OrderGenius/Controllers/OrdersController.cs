@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OrderGenius.Core.Entities.Identity;
 using OrderGenius.Core.Entities.OrderAggregate;
 using OrderGenius.Core.Interfaces;
 using OrderGenius.Dtos;

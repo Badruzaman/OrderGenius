@@ -11,10 +11,11 @@ namespace OrderGenius.Dtos
         public string Name { get; set; }
         [StringLength(200)]
         public string? Description { get; set; }
-        [Column(TypeName = "decimal(18,5)")]
-        public decimal? Price { get; set; }
         [StringLength(75)]
         public string? PictureUrl { get; set; }
-       
+        [Column(TypeName = "decimal(18,5)")]
+        public decimal? Quantity { get; set; }
+        public decimal? UnitPrice { get; set; }
+
     }
 }

@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OrderGenius.Core.Entities.CutomerAggregate;
+using OrderGenius.Application.Commands.Products.Command;
 using OrderGenius.Core.Entities.ProductAggregate;
-using OrderGenius.Core.Interfaces;
 using OrderGenius.Dtos;
 using OrderGenius.Errors;
 
@@ -14,19 +13,19 @@ namespace OrderGenius.Controllers
     public class productController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private IProductService _productService { get; }
-        public productController(IProductService productService, IMapper mapper)
+        private readonly IMediator _mediator;
+        public productController(IMapper mapper, IMediator mediator)
         {
-            _productService = productService;
             _mapper = mapper;
+            _mediator = mediator;
         }
         [HttpPost(nameof(createproduct))]
-        public async Task<ActionResult<Customer>> createproduct(ProductDto productDto)
+        public async Task<ActionResult<Product>> createproduct(ProductDto productDto)
         {
             try
             {
                 var product = _mapper.Map<Product>(productDto);
-                var result = await _productService.CreateProductAsync(product);
+                var result = await _mediator.Send(new AddProductCommand(product)); 
                 if (result == null)
                 {
                     return BadRequest(new APIResponce(400, "Something went Wrong"));

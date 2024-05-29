@@ -1,10 +1,12 @@
-using AutoMapper;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using OrderGenius.Application.Commands.Customers.Handler;
+using OrderGenius.Application.Commands.Products.Handler;
 using OrderGenius.Application.CustomerServices;
 using OrderGenius.Application.CustomServices;
 using OrderGenius.Application.OrderServices;
@@ -67,6 +69,12 @@ builder.Services.AddApiVersioning(options =>
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.ReportApiVersions = true;
 });
+//
+
+// Mediator
+builder.Services.AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(Program).Assembly));
+builder.Services.AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(AddCustomerCommandHandler).Assembly));
+builder.Services.AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(AddProductCommandHandler).Assembly));
 //
 
 //await AppIdentityDbContextSeed.SeedUserData(UserManager<AppUser>>());

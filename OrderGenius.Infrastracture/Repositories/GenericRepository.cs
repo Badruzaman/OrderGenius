@@ -34,7 +34,6 @@ namespace OrderGenius.Infrastracture.Repositories
                 throw;
             }
         }
-
         public async Task<T> GetByIdAsync(int id)
         {
             try
@@ -43,7 +42,6 @@ namespace OrderGenius.Infrastracture.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -56,7 +54,6 @@ namespace OrderGenius.Infrastracture.Repositories
         {
             return await ApplySpecification(specification).FirstOrDefaultAsync();
         }
-
         public async Task<IReadOnlyList<T>> ListAsync(ISpecifications<T> specification)
         {
             return await ApplySpecification(specification).ToListAsync();
@@ -69,18 +66,15 @@ namespace OrderGenius.Infrastracture.Repositories
         {
             return SpecificationEvaluator<T>.GetQuery(_storeContext.Set<T>().AsQueryable(), specifications);
         }
-
         public void Add(T entity)
         {
             _storeContext.Add<T>(entity);
         }
-
         public void Update(T entity)
         {
             _storeContext.Attach<T>(entity);
             _storeContext.Entry(entity).State = EntityState.Modified;
         }
-
         public void Delete(T entity)
         {
             _storeContext.Set<T>().Remove(entity);

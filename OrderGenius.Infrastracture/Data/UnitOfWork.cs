@@ -25,20 +25,20 @@ namespace OrderGenius.Infrastracture.Data
         {
             _storeContext.Dispose();
         }
+        //public IGenericRepository<TEntity> repository<TEntity>() where TEntity : BaseEntity
+        //{
+        //    if (_repositories == null)
+        //        _repositories = new Hashtable();
+        //    var Type = typeof(TEntity).Name;
+        //    if (!_repositories.ContainsKey(Type))
+        //    {
+        //        var repositiryType = typeof(GenericRepository<>);
+        //        var repositoryInstance = Activator.CreateInstance(repositiryType.MakeGenericType(typeof(TEntity)), _storeContext);
+        //        _repositories.Add(Type, repositoryInstance);
+        //    }
+        //    return (IGenericRepository<TEntity>)_repositories[Type];
+        //}
         public IGenericRepository<TEntity> repository<TEntity>() where TEntity : BaseEntity
-        {
-            if (_repositories == null)
-                _repositories = new Hashtable();
-            var Type = typeof(TEntity).Name;
-            if (!_repositories.ContainsKey(Type))
-            {
-                var repositiryType = typeof(GenericRepository<>);
-                var repositoryInstance = Activator.CreateInstance(repositiryType.MakeGenericType(typeof(TEntity)), _storeContext);
-                _repositories.Add(Type, repositoryInstance);
-            }
-            return (IGenericRepository<TEntity>)_repositories[Type];
-        }
-        public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
             if (_repository.ContainsKey(typeof(TEntity)))
             {

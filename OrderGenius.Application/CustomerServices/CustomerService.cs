@@ -20,7 +20,7 @@ namespace OrderGenius.Application.CustomerServices
         {
             try
             {
-                _unitOfWork.GetRepository<Customer>().Add(customer);
+                _unitOfWork.repository<Customer>().Add(customer);
                 var result = await _unitOfWork.Commit();
                 if (result <= 0)
                 {

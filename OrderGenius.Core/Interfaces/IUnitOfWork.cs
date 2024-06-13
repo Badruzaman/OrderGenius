@@ -13,6 +13,6 @@ namespace OrderGenius.Core.Interfaces
         Task<int> Complete();
         Task<int> Commit();
         void Rollback();
-        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity;
+       // IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity;
     }
 }

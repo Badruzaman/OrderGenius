@@ -28,14 +28,14 @@ namespace OrderGenius.Controllers
                 var result = await _mediator.Send(new AddProductCommand(product)); 
                 if (result == null)
                 {
-                    return BadRequest(new APIResponce(400, "Something went Wrong"));
+                    return BadRequest(new APIResponce(400, "Something went wrong"));
                 }
             }
             catch (Exception)
             {
                 //return StatusCode(StatusCodes.Status500InternalServerError,
                 //   "Error storing data in the database");
-                return BadRequest(new APIResponce(400, "Something went Wrong"));
+                return BadRequest(new APIResponce(0, "Something went wrong"));
             }
             return Ok(productDto);
         }

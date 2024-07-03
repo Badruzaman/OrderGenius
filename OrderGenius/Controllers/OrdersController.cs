@@ -23,6 +23,15 @@ namespace OrderGenius.Controllers
         {
             try
             {
+                //var options = new RestClientOptions("https://sandboxpurchasesapi.connexpay.com/api/v1/IssueCard");
+                //var client = new RestClient(options);
+                //var request = new RestRequest("");
+                //request.AddHeader("accept", "application/json");
+                //request.AddHeader("Authorization", "Basic <JWT>");
+                //request.AddJsonBody("{\"OrderNumber\":\"{{OrderNumber}}\"}", false);
+                //var response = await client.PostAsync(request);
+                //Console.WriteLine("{0}", response.Content);
+
                 var order = _mapper.Map<Order>(orderDto);
                 var result = await _orderService.CreateOrderAsync(order);
                 if (result == null)
